@@ -824,7 +824,7 @@ viewEditor editor =
 
 allSymptoms : List Symptom
 allSymptoms =
-    [ Cramps, Headache, Bloating, Fatigue, TenderBreasts, Acne, Cravings, BackPain, Nausea ]
+    [ Cramps, Headache, Bloating, Fatigue, TenderBreasts, Acne, Cravings, BackPain, Nausea, TiredLegs, NervousStomach ]
 
 
 flowLabel : Flow -> String
@@ -910,6 +910,12 @@ symptomLabel symptom =
 
         Nausea ->
             "Nausea"
+
+        TiredLegs ->
+            "Tired legs"
+
+        NervousStomach ->
+            "Nervous stomach"
 
 
 

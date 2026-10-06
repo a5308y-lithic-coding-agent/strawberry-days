@@ -50,6 +50,8 @@ type Symptom
     | Cravings
     | BackPain
     | Nausea
+    | TiredLegs
+    | NervousStomach
 
 
 type alias Settings =
