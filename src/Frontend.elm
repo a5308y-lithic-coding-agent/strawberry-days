@@ -148,12 +148,12 @@ update msg model =
             ( updateEntry
                 (\entry ->
                     { entry
-                        | mood =
-                            if entry.mood == Just mood then
-                                Nothing
+                        | moods =
+                            if List.member mood entry.moods then
+                                List.filter ((/=) mood) entry.moods
 
                             else
-                                Just mood
+                                entry.moods ++ [ mood ]
                     }
                 )
                 model
@@ -705,7 +705,7 @@ viewDayCell model summary firstOfMonth date =
         hasDetails =
             case entry of
                 Just e ->
-                    e.mood /= Nothing || not (List.isEmpty e.symptoms) || e.note /= ""
+                    not (List.isEmpty e.moods) || not (List.isEmpty e.symptoms) || e.note /= ""
 
                 Nothing ->
                     False
@@ -793,7 +793,7 @@ viewEditor editor =
             , h4 [] [ text "Mood" ]
             , div [ class "chips" ]
                 (List.map
-                    (\m -> chip (entry.mood == Just m) "leaf" (ToggleMood m) (moodLabel m))
+                    (\m -> chip (List.member m entry.moods) "leaf" (ToggleMood m) (moodLabel m))
                     [ Happy, Calm, Sensitive, Irritable, Sad, Anxious ]
                 )
             , h4 [] [ text "Symptoms" ]
