@@ -18,7 +18,7 @@ import Url exposing (Url)
 -}
 type alias DayEntry =
     { flow : Maybe Flow
-    , mood : Maybe Mood
+    , moods : List Mood
     , symptoms : List Symptom
     , note : String
     }
@@ -69,7 +69,7 @@ type alias AppData =
 
 emptyEntry : DayEntry
 emptyEntry =
-    { flow = Nothing, mood = Nothing, symptoms = [], note = "" }
+    { flow = Nothing, moods = [], symptoms = [], note = "" }
 
 
 defaultSettings : Settings
